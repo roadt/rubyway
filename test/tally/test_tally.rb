@@ -1,0 +1,96 @@
+
+
+require 'happymapper'
+require 'httpi'
+
+
+
+#TXML = "<ENVELOPE><HEADER><VERSION>1</VERSION><TALLYREQUEST>Export</TALLYREQUEST><TYPE>Data</TYPE><ID>Trial Balance</ID></HEADER><BODY><DESC><STATICVARIABLES><EXPLODEFLAG>Yes</EXPLODEFLAG><SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT></STATICVARIABLES></DESC></BODY></ENVELOPE>";
+
+#TXML = "<ENVELOPE><HEADER><VERSION>1</VERSION><TALLYREQUEST>EXPORT</TALLYREQUEST><TYPE>OBJECT</TYPE><SUBTYPE>Ledger</SUBTYPE><ID TYPE=\"Name\">Einstein</ID></HEADER><BODY><DESC><STATICVARIABLES><SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT></STATICVARIABLES><FETCHLIST><FETCH>Name</FETCH><FETCH>TNetBalance</FETCH><FETCH>LedgerPhone</FETCH></FETCHLIST><TDL>Integration - The Overall Perspective24<TDLMESSAGE><OBJECT NAME=\"Ledger ISINITIALIZE=\"Yes\"><LOCALFORMULA>TNetBalance: $$AsPositive: $$AmountSubtract: $ClosingBalance: $OpeningBalance</LOCALFORMULA></OBJECT></TDLMESSAGE></TDL></DESC></BODY></ENVELOPE>";
+
+
+
+msg = "<ENVELOPE>
+<HEADER>
+<VERSION>1</VERSION>
+<TALLYREQUEST>EXPORT</TALLYREQUEST>
+<TYPE>OBJECT</TYPE>
+<SUBTYPE>Ledger</SUBTYPE>
+<ID TYPE=\"Name\">Einstein</ID>
+</HEADER>
+<BODY>
+<DESC>
+<STATICVARIABLES>
+<SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+</STATICVARIABLES>
+<FETCHLIST><FETCH>Name</FETCH>
+<FETCH>TNetBalance</FETCH>
+<FETCH>LedgerPhone</FETCH>
+</FETCHLIST>
+<TDL>Integration - The Overall Perspective24
+<TDLMESSAGE>
+<OBJECT NAME=\"Ledger ISINITIALIZE=\"Yes\">
+<LOCALFORMULA>TNetBalance: $$AsPositive: $$AmountSubtract: $ClosingBalance: $OpeningBalance
+</LOCALFORMULA>
+</OBJECT>
+</TDLMESSAGE>
+</TDL>
+</DESC>
+</BODY>
+</ENVELOPE>"
+
+
+req = HTTPI::Request.new
+req.url = 'http://192.168.1.125:9000'
+
+req.body =<<EOF
+<envelope><HEADER>
+<VERSION>1</VERSION>
+<TALLYREQUEST>EXPORT</TALLYREQUEST>
+<TYPE>OBJECT</TYPE>
+<SUBTYPE>Ledger</SUBTYPE>
+<ID TYPE="Name">ABC India Pvt. Ltd. </ID>
+</HEADER><body></body></envelope>
+EOF
+
+req.body = <<EOF
+<ENVELOPE>
+<HEADER>
+<VERSION>1</VERSION>
+<TALLYREQUEST>EXPORT</TALLYREQUEST>
+<TYPE>Object</TYPE>
+<ID>Group</ID>
+</HEADER>
+<BODY>
+<DESC>
+</DESC>
+</BODY>
+</ENVELOPE>
+EOF
+
+req.body = <<EOF
+<ENVELOPE>
+ 	<HEADER>
+    		<VERSION>1</VERSION>
+    		<TALLYREQUEST>Export</TALLYREQUEST>
+    		<TYPE>Data</TYPE>
+    		<ID>Group</ID>
+ 	</HEADER>
+<BODY>
+<DESC>
+<STATICVARIABLES>
+       		    		<EXPLODEFLAG>Yes</EXPLODEFLAG>
+       		    		<SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+   		  	</STATICVARIABLES>
+</DESC>
+  <DATA>
+ </DATA>
+ </BODY>
+</ENVELOPE>
+EOF
+
+req.headers['SOAPAction'] = ''
+#req.headers['Content-Type'] = "text/xml; charset=utf-8"
+#req.headers['Content-Type'] = ""
+r = HTTPI.post(req)
