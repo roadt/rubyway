@@ -1,0 +1,14 @@
+---
+common:  &common
+  a: 
+    aa: 1
+    bb: 2
+  b: 2
+
+development: 
+  a: 
+    c: 33
+    <<: *common
+
+
+
