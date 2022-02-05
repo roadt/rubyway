@@ -1,0 +1,47 @@
+
+RSpec::Core::ExampleGroup::Nested_1::Nested_1::LetDefinitions
+RSpec::Core::ExampleGroup::Nested_1::Nested_1::NamedSubjectPreventSuper
+RSpec::Core::ExampleGroup::Nested_1::LetDefinitions
+RSpec::Core::ExampleGroup::Nested_1::NamedSubjectPreventSuper
+Capybara::RSpecMatchers
+Capybara::DSL
+RSpec::Rails::ControllerExampleGroup
+#<RSpec::Rails::AssertionDelegator:0x00000009b65c70>
+RSpec::Rails::Matchers::RoutingMatchers -> wrap  assert_recognize
+RSpec::Rails::Matchers::RenderTemplate  -> wrap assert_template
+RSpec::Rails::Matchers::RedirectTo -> wrap assert_redirect_to
+RSpec::Rails::ViewRendering
+
+ActionDispatch::Assertions
+ActionDispatch::Assertions::TagAssertions
+ActionDispatch::Assertions::SelectorAssertions
+ActionDispatch::Assertions::RoutingAssertions
+ActionDispatch::Assertions::DomAssertions
+ActionDispatch::Assertions::ResponseAssertions
+
+ActionController::TemplateAssertions*
+ActionController::TestCase::Behavior*
+
+ActionDispatch::TestProcess* -> assigns, session, flash, cookies, redirect_to_url
+
+RSpec::Rails::RailsExampleGroup
+RSpec::Rails::Matchers
+RSpec::Rails::Mocks
+RSpec::Rails::FixtureSupport
+ActiveRecord::TestFixtures*
+
+RSpec::Rails::TestUnitAssertionAdapter* -> supply the test unit code
+
+RSpec::Rails::SetupAndTeardownAdapter
+RSpec::Matchers
+RSpec::Core::MockFrameworkAdapter
+RSpec::Core::SharedExampleGroup
+RSpec::Core::Pending
+RSpec::Core::Extensions::InstanceEvalWithArgs
+RSpec::Core::MemoizedHelpers
+V8::Conversion::Object
+ActsAsFu
+PP::ObjectMixin
+JSON::Ext::Generator::GeneratorMethods::Object
+ActiveSupport::Dependencies::Loadable
+Kernel
