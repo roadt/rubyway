@@ -1,0 +1,10 @@
+
+
+repositories.remote << 'http://www.ibiblio.org/maven2'
+
+define 'hello' do 
+       project.version = '0.0.1'
+       compile.with 'commons-cli:commons-cli:jar:1.2'
+#       compile.with transitive('org.apache.wicket:wicket:jar:1.4')
+       package :jar
+end

@@ -1,0 +1,4 @@
+
+
+require 'aws/s3'
+
